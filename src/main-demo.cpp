@@ -15,6 +15,8 @@ using namespace glm;
 using namespace agl;
 
 MyParticleSystem theSystem;
+float width = 500;
+float height = 500;
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
    if (action != GLFW_PRESS) return;
@@ -43,7 +45,7 @@ static void mouse_button_callback(GLFWwindow* window, int button, int action, in
 {
     double xpos, ypos;
     glfwGetCursorPos(window, &xpos, &ypos);
-    theSystem.setStartPos(vec3((xpos/250.0f) - 1.0f, -((ypos/250.0f) - 1.0f), 0.5f));
+    theSystem.setStartPos(vec3((xpos/(width/2.0f)) - 1.0f, -((ypos/(height/2.0f)) - 1.0f), 0.5f));
     theSystem.setStartCol(vec4(random_unit_vector(), 1.0));
 }
 
@@ -67,8 +69,7 @@ int main(int argc, char** argv)
    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
    /* Create a windowed mode window and its OpenGL context */
-   float width = 500;
-   float height = 500;
+
    window = glfwCreateWindow(width, height, "Particle Viewer", NULL, NULL);
    if (!window)
    {
@@ -107,10 +108,6 @@ int main(int argc, char** argv)
 
       float dt = glfwGetTime() - lastTime;
       lastTime = glfwGetTime();
-      //if (change == true) {
-      //    theSystem.init(500); // TODO: Set number of particles here
-      //    change = false;
-      //}
       theSystem.update(dt);
       theSystem.draw();
 

@@ -50,13 +50,16 @@ void Confetti::update(float dt)
 		if (i == 0) {
 			continue;
 		}
-		else {
-			Particle p = mParticles[i];
-			Particle previous = mParticles[i - 1];
+		for (int j = 0; j < mParticles.size() - i;j++) {
+			if (j == 0) {
+				continue;
+			}
+			Particle p = mParticles[j];
+			Particle previous = mParticles[j - 1];
 			float d2 = length(p.pos - theRenderer.cameraPosition());
 			float d1 = length(previous.pos - theRenderer.cameraPosition());
 			if (d2 > d1) {
-				swap(mParticles[i - 1], mParticles[i]);
+				swap(mParticles[j - 1], mParticles[j]);
 			}
 		}
 	}

@@ -38,5 +38,20 @@ void  MyParticleSystem::update(float dt)
 		}
 		mParticles[i] = p;
 	}
+
+	for (int i = 0; i < mParticles.size();i++) {
+		if (i == 0) {
+			continue;
+		}
+		else {
+			Particle p = mParticles[i];
+			Particle previous = mParticles[i - 1];
+			float d1 = length(p.pos - theRenderer.cameraPosition());
+			float d2 = length(previous.pos - theRenderer.cameraPosition());
+			if (d2 < d1) {
+				swap(mParticles[i - 1], mParticles[i]);
+			}
+		}
+	}
 }
 
