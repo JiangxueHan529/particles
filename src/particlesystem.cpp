@@ -40,3 +40,20 @@ void ParticleSystem::draw()
       theRenderer.quad(particle.pos, particle.color, particle.size);
    }
 }
+
+
+void  ParticleSystem::setStartPos(vec3 pos) {
+    startPos = pos;
+}
+
+void  ParticleSystem::setStartCol(vec4 col) {
+    startCol = col;
+}
+
+vec3 ParticleSystem::getStartPos() {
+    return startPos;
+}
+
+vec4  ParticleSystem::getStartCol() {
+    return startCol;
+}

@@ -12,9 +12,9 @@ using namespace glm;
 
 void MyParticleSystem::createParticles(int size)
 {
-	mTexture = theRenderer.loadTexture("../textures/particle.png");
+	mTexture = theRenderer.loadTexture("../textures/ParticleFirecloud.png");
 	for (int i = 0; i < size; i++) {
-		Particle particle = { vec3(0,0,0), random_unit_vector(),vec4(random_unit_vector(), rand() / (RAND_MAX + 1.)), 0.05, rand() / (RAND_MAX + 1.) };
+		Particle particle = {startPos, random_unit_vector(),startCol, 0.05, rand() / (RAND_MAX + 1.) };
 		mParticles.push_back(particle);
 	}
 }
@@ -23,42 +23,20 @@ void  MyParticleSystem::update(float dt)
 {
 	for (int i = 0; i < mParticles.size(); i++) {
 		Particle p = mParticles[i];
-		p.vel += vec3(0, -1, 0);
-		vec3 new_pos = p.pos + p.vel * dt;
-		if (new_pos[0] < -1) {
-			p.vel = reflect(p.vel, vec3(1, 0, 0));
-		}
-		else if (new_pos[0] > 1) {
-			p.vel = reflect(p.vel, vec3(-1, 0, 0));
-		}
-		else if (new_pos[1] > 1) {
-			p.vel = reflect(p.vel, vec3(0, -1, 0));
-		}
-		else if (new_pos[1] < -1) {
-			p.vel = reflect(p.vel, vec3(0, 1, 0));
-		}
-		else if (new_pos[2] > 1) {
-			p.vel = reflect(p.vel, vec3(0, 0, -1));
-		}
-		else if (new_pos[2] < -1) {
-			p.vel = reflect(p.vel, vec3(0, 0, 1));
-		}
-		p.pos = p.pos + p.vel * dt;
-		mParticles[i] = p;
-	}
-	for (int i = 0; i < mParticles.size();i++) {
-		if (i == 0) {
-			continue;
+		if (p.color[3] < 0.0) {
+			p.pos = startPos;
+			p.vel = random_unit_vector();
+			p.color = startCol;
+			p.size = 0.05;
+			p.mass = rand() / (RAND_MAX + 1.);
+
 		}
 		else {
-			Particle p = mParticles[i];
-			Particle previous = mParticles[i - 1];
-			float d2 = length(p.pos - theRenderer.cameraPosition());
-			float d1 = length(previous.pos - theRenderer.cameraPosition());
-			if (d2 > d1) {
-				swap(mParticles[i - 1], mParticles[i]);
-			}
+			p.vel += vec3(0, -9.8, 0) * dt;
+			p.pos = p.pos + p.vel * dt;
+			p.color = vec4(p.color[0], p.color[1], p.color[2], p.color[3] - 0.001);
 		}
+		mParticles[i] = p;
 	}
 }
 

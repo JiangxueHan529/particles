@@ -15,7 +15,6 @@ using namespace glm;
 using namespace agl;
 
 MyParticleSystem theSystem;
-
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
    if (action != GLFW_PRESS) return;
@@ -42,6 +41,10 @@ static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 
 static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 {
+    double xpos, ypos;
+    glfwGetCursorPos(window, &xpos, &ypos);
+    theSystem.setStartPos(vec3((xpos/250.0f) - 1.0f, -((ypos/250.0f) - 1.0f), 0.5f));
+    theSystem.setStartCol(vec4(random_unit_vector(), 1.0));
 }
 
 static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
@@ -104,7 +107,10 @@ int main(int argc, char** argv)
 
       float dt = glfwGetTime() - lastTime;
       lastTime = glfwGetTime();
-
+      //if (change == true) {
+      //    theSystem.init(500); // TODO: Set number of particles here
+      //    change = false;
+      //}
       theSystem.update(dt);
       theSystem.draw();
 

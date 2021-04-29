@@ -26,7 +26,11 @@ namespace agl {
       virtual void draw();
 
       static Renderer& GetRenderer();
-      
+      void setStartPos(glm::vec3 pos);
+      void setStartCol(glm::vec4 col);
+      glm::vec3 getStartPos();
+      glm::vec4 getStartCol();
+
    protected:
       virtual void createParticles(int size) = 0;
 
@@ -36,6 +40,8 @@ namespace agl {
       GLuint mTexture;
       BlendMode mBlendMode;
       static Renderer theRenderer;
+      glm::vec3 startPos = glm::vec3(0, 0.5,0);
+      glm::vec4 startCol = glm::vec4(1,1,0,1); 
    };
 }
 #endif
