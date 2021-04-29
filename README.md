@@ -50,8 +50,8 @@ For unique demo, I have implemented a firework-ish feature without trailing effe
 ![alt text](https://github.com/JiangxueHan529/particles/blob/main/results/billboard.jpg)
 
 2. confetti:\
-![alt text](https://github.com/JiangxueHan529/particles/blob/main/results/confetti.jpg)\
-I'm just showing a screenshot here because the gif is malformating for this one, and I have no idea why. I have included a.mwv video file that shows the movements. Here is the link: https://github.com/JiangxueHan529/particles/blob/main/results/confetti.wmv.
+![alt text](https://github.com/JiangxueHan529/particles/blob/main/results/confetti_updated.jpg)\
+I'm just showing a screenshot here because the gif is malformating for this one, and I have no idea why. I have included a.mwv video file that shows the movements. Here is the link: https://github.com/JiangxueHan529/particles/blob/main/results/confetti.webm.
 There is still some amount of black boxes in confetti despite the sorting.
 
 3. unique demo:\
