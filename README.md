@@ -53,4 +53,4 @@ For unique demo, I have implemented a firework-ish feature without trailing effe
 ![alt text](https://github.com/JiangxueHan529/particles/blob/main/results/confetti.jpg)
 
 3. unique demo:\
- ![alt text](https://github.com/JiangxueHan529/particles/blob/main/results/unique%20particle.gif)
+ ![alt text](https://github.com/JiangxueHan529/particles/blob/main/results/demo.gif)
