@@ -2,8 +2,6 @@
 
 Implements particle systems using openGL
 
-TODO: Add a representative image for your project here
-
 ## How to build
 
 *Windows*
@@ -47,4 +45,13 @@ particles/build $ ../bin/demo
 
 ## Results
 
-TODO: Show your work
+For unique demo, I have implemented a firework-ish feature without trailing effect ( ok I admit it looks more like confetti being thrown out and fall under gravity). To see it, run demo and there is a default location and color in the middle of screen. Click on the position in the window where you want the firework to originate. You can do this as many times as you want, the and color changes!
+
+1. billboard: \
+ ![alt text](https://github.com/JiangxueHan529/particles/blob/main/results/billboard.jpg)
+ 
+2. confetti:\
+ ![alt text](https://github.com/JiangxueHan529/particles/blob/main/results/confetti.gif)
+
+3. unique demo:\
+ ![alt text](https://github.com/JiangxueHan529/particles/blob/main/results/unique%20particle.gif)
